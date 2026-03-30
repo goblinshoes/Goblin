@@ -164,10 +164,10 @@ panes.forEach((pane) => {
       pane.classList.remove("is-dragging");
 
       document.removeEventListener("mousemove", "touchmove", drag);
-      document.removeEventListener("mouseup", mouseup);
+      document.removeEventListener("mouseup", "touchend", mouseup);
     };
 
     document.addEventListener("mousemove", "touchmove", drag);
-    document.addEventListener("mouseup", mouseup);
+    document.addEventListener("mouseup", "touchend", mouseup);
   });
 });
