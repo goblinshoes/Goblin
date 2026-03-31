@@ -102,12 +102,12 @@ panes.forEach((pane) => {
     starX = 0,
     startY = 0;
 
-  pane.addEventListener("touchstart", () => {
+  pane.addEventListener("mousedown", () => {
     z = z + 1;
     pane.style.zIndex = z;
   });
 
-  title.addEventListener("touchstart", (event) => {
+  title.addEventListener("mousedown", (event) => {
     event.preventDefault();
     pane.classList.add("is-dragging");
 
@@ -138,15 +138,15 @@ panes.forEach((pane) => {
     const mouseup = () => {
       pane.classList.remove("is-dragging");
 
-      document.removeEventListener("touchmove", drag);
-      document.removeEventListener("touchend", mouseup);
+      document.removeEventListener("mousemove", drag);
+      document.removeEventListener("mouseup", mouseup);
     };
 
-    document.addEventListener("touchmove", drag);
-    document.addEventListener("touchend", mouseup);
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("mouseup", mouseup);
   });
 
-  corner.addEventListener("touchstart", (event) => {
+  corner.addEventListener("mousedown", (event) => {
     event.preventDefault();
 
     let w = pane.clientWidth;
@@ -163,11 +163,11 @@ panes.forEach((pane) => {
     const mouseup = () => {
       pane.classList.remove("is-dragging");
 
-      document.removeEventListener("touchmove", drag);
-      document.removeEventListener("touchend", mouseup);
+      document.removeEventListener("mousemove", drag);
+      document.removeEventListener("mouseup", mouseup);
     };
 
-    document.addEventListener("touchmove", drag);
-    document.addEventListener("touchend", mouseup);
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("mouseup", mouseup);
   });
 });
