@@ -171,3 +171,82 @@ panes.forEach((pane) => {
     document.addEventListener("touchend", mouseup);
   });
 });
+
+panes.forEach((pane) => {
+  const title = pane.querySelector(".title");
+  const corner = pane.querySelector(".corner");
+
+  var l = 0,
+    t = 0,
+    starX = 0,
+    startY = 0;
+
+  pane.addEventListener("mousedown", () => {
+    z = z + 1;
+    pane.style.zIndex = z;
+  });
+
+  title.addEventListener("mousedown", (event) => {
+    event.preventDefault();
+    pane.classList.add("is-dragging");
+
+    let l = pane.offsetLeft;
+    let t = pane.offsetTop;
+
+    let startX = event.screenX;
+    let startY = event.screenY;
+
+    let xMax = window.innerWidth - 200;
+    let yMax = window.innerHeight - 30;
+
+    const drag = (event) => {
+      if (
+        l + (event.screenX - startX) >= 0 &&
+        l + (event.screenX - startX) <= xMax
+      ) {
+        pane.style.left = l + (event.screenX - startX) + "px";
+      }
+      if (
+        t + (event.screenY - startY) >= 0 &&
+        t + (event.screenY - startY) <= yMax
+      ) {
+        pane.style.top = t + (event.screenY - startY) + "px";
+      }
+    };
+
+    const mouseup = () => {
+      pane.classList.remove("is-dragging");
+
+      document.removeEventListener("mousemove", drag);
+      document.removeEventListener("mouseup", mouseup);
+    };
+
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("mouseup", mouseup);
+  });
+
+  corner.addEventListener("mousedown", (event) => {
+    event.preventDefault();
+
+    let w = pane.clientWidth;
+    let h = pane.clientHeight;
+
+    let startX = event.screenX;
+    let startY = event.screenY;
+
+    const drag = (event) => {
+      pane.style.width = w + (event.screenX - startX) + "px";
+      pane.style.height = h + (event.screenY - startY) + "px";
+    };
+
+    const mouseup = () => {
+      pane.classList.remove("is-dragging");
+
+      document.removeEventListener("mousemove", drag);
+      document.removeEventListener("mouseup", mouseup);
+    };
+
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("mouseup", mouseup);
+  });
+});
