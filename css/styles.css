@@ -167,7 +167,7 @@ h2 {
   width: var(--pane-default-width);
   height: var(--pane-default-height);
 
-  min-width: 400px;
+  min-width: 250px;
   min-height: 200px;
 
   display: grid;
