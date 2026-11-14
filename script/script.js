@@ -102,12 +102,12 @@ panes.forEach((pane) => {
     starX = 0,
     startY = 0;
 
-  pane.addEventListener("mousedown", () => {
+  pane.addEventListener("pointerdown", () => {
     z = z + 1;
     pane.style.zIndex = z;
   });
 
-  title.addEventListener("mousedown", (event) => {
+  title.addEventListener("pointerdown", (event) => {
     event.preventDefault();
     pane.classList.add("is-dragging");
 
@@ -135,18 +135,18 @@ panes.forEach((pane) => {
       }
     };
 
-    const mouseup = () => {
+    const pointerup = () => {
       pane.classList.remove("is-dragging");
 
-      document.removeEventListener("mousemove", drag);
-      document.removeEventListener("mouseup", mouseup);
+      document.removeEventListener("pointermove", drag);
+      document.removeEventListener("pointerup", pointerup);
     };
 
-    document.addEventListener("mousemove", drag);
-    document.addEventListener("mouseup", mouseup);
+    document.addEventListener("pointermove", drag);
+    document.addEventListener("pointerup", pointerup);
   });
 
-  corner.addEventListener("mousedown", (event) => {
+  corner.addEventListener("pointerdown", (event) => {
     event.preventDefault();
 
     let w = pane.clientWidth;
@@ -160,14 +160,14 @@ panes.forEach((pane) => {
       pane.style.height = h + (event.screenY - startY) + "px";
     };
 
-    const mouseup = () => {
+    const pointerup = () => {
       pane.classList.remove("is-dragging");
 
-      document.removeEventListener("mousemove", drag);
-      document.removeEventListener("mouseup", mouseup);
+      document.removeEventListener("pointermove", drag);
+      document.removeEventListener("pointerup", pointerup);
     };
 
-    document.addEventListener("mousemove", drag);
-    document.addEventListener("mouseup", mouseup);
+    document.addEventListener("pointermove", drag);
+    document.addEventListener("pointerup", pointerup);
   });
 });

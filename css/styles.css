@@ -3,15 +3,15 @@
   margin: 0;
 }
 :root {
-  --desktop-color: #a19891;
-  --desktop-text-color: #333333;
+  --desktop-color: #e4d1ac;
+  --desktop-text-color: #6b341c;
 
-  --title-bar-color: #333333;
-  --title-bar-text-color: #a19891;
-  --title-bar-highlight-colour: #a19891;
+  --title-bar-color: #6b341c;
+  --title-bar-text-color: #e4d1ac;
+  --title-bar-highlight-colour: #b48a49;
   --title-bar-height: 32px;
 
-  --pane-content-background-color: white;
+  --pane-content-background-color: #9b926c;
 
   --pane-default-width: 40vw;
   --pane-default-height: 50vh;
@@ -19,7 +19,7 @@
 }
 
 body {
-  background: var(--desktop-color);
+  background: radial-gradient(circle, #e4d1ac 0%, #d6bd8f 50%, #b48a49 0%);
 
   height: 100vh;
   overflow: clip;
@@ -174,7 +174,7 @@ h2 {
   grid-template-rows: var(--title-bar-height) 1fr;
 
   border-radius: var(--pane-border-radius);
-  outline: 2px solid var(--title-bar-color);
+  outline: 2px solid var(--desktop-color);
 
   overflow: clip;
 }
@@ -195,7 +195,7 @@ h2 {
 .pane h2 {
   font-size: 1rem;
   font-weight: 400;
-  color: whitesmoke;
+  color: var(--title-bar-text-color);
 }
 
 .pane .content {
@@ -234,7 +234,7 @@ h2 {
   padding-top: 5px;
   display: flex;
   align-items: center;
-  background-color: #6e655e;
+  background-color: var(--title-bar-color);
 }
 
 .pane .content .linksContent > * {
@@ -269,7 +269,7 @@ h2 {
   gap: 10px;
 }
 .socials-container a {
-  background-color: white;
+  background-color: var(--pane-content-background-color);
   display: flex;
   align-items: center;
   justify-content: center;
